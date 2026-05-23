@@ -1,0 +1,4 @@
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+awscliv2.zip
+*.zip
