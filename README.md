@@ -24,28 +24,6 @@ User → curl POST → NGINX Gateway → iii Engine → TypeScript Caller
 → Python Inference Worker → Gemma AI Model → response back
 
 
-🌍 PUBLIC INTERNET
-                       │
-                ┌──────▼──────┐
-                │ gateway-vm  │  44.192.58.125 (public IP)
-                │  NGINX :80  │  Receives all HTTP traffic
-                └──────┬──────┘
-                       │ forwards to port 3111
-      ════════════════════════════════════════
-      🔒  PRIVATE SUBNET — no public access
-      ════════════════════════════════════════
-                ┌──────▼──────┐
-                │  engine-vm  │  10.0.2.8
-                │ iii engine  │  WebSocket: 49134
-                │  REST API   │  HTTP API:  3111
-                └──────┬──────┘
-                routes via WebSocket
-                ┌──────┴────────────┐
-         ┌──────▼──────┐    ┌───────▼──────┐
-         │inference-vm │    │  caller-vm   │
-         │  10.0.2.140 │    │  10.0.2.45   │
-         │Python/Gemma │    │  TypeScript  │
-         └─────────────┘    └──────────────┘
          ### VM Summary
 
 
