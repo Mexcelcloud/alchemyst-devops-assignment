@@ -1,3 +1,8 @@
+
+## Architecture Overview
+
+![Architecture Diagram](alchemyst.png)
+
 # Distributed Inferencing Prototype — DevOps Deployment Manual
 
 **Candidate:** Dennis Sunday Chimezie (MexcelCloud)  
