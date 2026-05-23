@@ -24,7 +24,7 @@ User → curl POST → NGINX Gateway → iii Engine → TypeScript Caller
 → Python Inference Worker → Gemma AI Model → response back
 
 
-         ### VM Summary
+## VM Summary
 
 
 | VM | Subnet | IP | Role |
