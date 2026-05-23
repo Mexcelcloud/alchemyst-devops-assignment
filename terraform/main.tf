@@ -1,4 +1,3 @@
-cat > terraform/main.tf << 'EOF'
 terraform {
   required_providers {
     aws = {
@@ -11,4 +10,3 @@ terraform {
 provider "aws" {
   region = var.aws_region
 }
-EOF

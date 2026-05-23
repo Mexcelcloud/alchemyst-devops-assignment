@@ -1,4 +1,3 @@
-cat > terraform/outputs.tf << 'EOF'
 output "gateway_public_ip" {
   value       = aws_instance.gateway.public_ip
   description = "Send curl requests to this IP"
@@ -18,4 +17,3 @@ output "caller_private_ip" {
   value       = aws_instance.caller.private_ip
   description = "TypeScript caller worker private IP"
 }
-EOF

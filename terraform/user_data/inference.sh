@@ -1,24 +1,16 @@
-cat > terraform/user_data/inference.sh << 'EOF'
 #!/bin/bash
 set -e
-
 apt-get update -y
-apt-get install -y curl git jq
-
-# Install iii
+apt-get install -y curl git jq docker.io
+systemctl enable docker
+systemctl start docker
 curl -fsSL https://install.iii.dev/iii/main/install.sh | sh
 export PATH="/root/.local/bin:$PATH"
 echo 'export PATH="/root/.local/bin:$PATH"' >> /root/.bashrc
-
-# Clone repo
 cd /opt
 git clone https://github.com/Alchemyst-ai/hiring.git
-
-# Wait for engine to be ready
 sleep 30
-
-# Create systemd service for inference worker
-cat > /etc/systemd/system/inference-worker.service << 'SERVICE'
+cat > /etc/systemd/system/inference-worker.service << SERVICE
 [Unit]
 Description=iii Inference Worker
 After=network.target
@@ -35,8 +27,6 @@ Environment=III_ENGINE_URL=ws://${engine_ip}:49134
 [Install]
 WantedBy=multi-user.target
 SERVICE
-
 systemctl daemon-reload
 systemctl enable inference-worker
 systemctl start inference-worker
-EOF

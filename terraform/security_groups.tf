@@ -1,5 +1,3 @@
-cat > terraform/security_groups.tf << 'EOF'
-# Gateway security group - faces the internet
 resource "aws_security_group" "gateway" {
   name   = "gateway-sg"
   vpc_id = aws_vpc.main.id
@@ -28,7 +26,6 @@ resource "aws_security_group" "gateway" {
   tags = { Name = "gateway-sg" }
 }
 
-# Private workers security group - only talks within VPC
 resource "aws_security_group" "private_workers" {
   name   = "private-workers-sg"
   vpc_id = aws_vpc.main.id
@@ -49,4 +46,3 @@ resource "aws_security_group" "private_workers" {
 
   tags = { Name = "private-workers-sg" }
 }
-EOF

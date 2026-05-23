@@ -1,4 +1,3 @@
-cat > terraform/ec2.tf << 'EOF'
 data "aws_ami" "ubuntu" {
   most_recent = true
   owners      = ["099720109477"]
@@ -8,7 +7,6 @@ data "aws_ami" "ubuntu" {
   }
 }
 
-# Gateway VM - public facing
 resource "aws_instance" "gateway" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t3.micro"
@@ -19,7 +17,6 @@ resource "aws_instance" "gateway" {
   tags = { Name = "gateway-vm" }
 }
 
-# Engine VM - private
 resource "aws_instance" "engine" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t3.micro"
@@ -30,29 +27,26 @@ resource "aws_instance" "engine" {
   tags = { Name = "engine-vm" }
 }
 
-# Inference VM - private (bigger for AI model)
 resource "aws_instance" "inference" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t3.small"
   subnet_id              = aws_subnet.private.id
   vpc_security_group_ids = [aws_security_group.private_workers.id]
   key_name               = var.key_name
-  user_data              = templatefile("${path.module}/user_data/inference.sh", {
+  user_data = templatefile("${path.module}/user_data/inference.sh", {
     engine_ip = aws_instance.engine.private_ip
   })
   tags = { Name = "inference-vm" }
 }
 
-# Caller VM - private
 resource "aws_instance" "caller" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t3.micro"
   subnet_id              = aws_subnet.private.id
   vpc_security_group_ids = [aws_security_group.private_workers.id]
   key_name               = var.key_name
-  user_data              = templatefile("${path.module}/user_data/caller.sh", {
+  user_data = templatefile("${path.module}/user_data/caller.sh", {
     engine_ip = aws_instance.engine.private_ip
   })
   tags = { Name = "caller-vm" }
 }
-EOF
