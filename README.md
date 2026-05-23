@@ -2,8 +2,7 @@
 
 **Candidate:** Dennis Sunday Chimezie (MexcelCloud)  
 **Assignment:** Alchemyst AI DevOps Internship — May 2026  
-**Repo:** https://github.com/Mexcelcloud/alchemyst-devops-assignment  
-**Original App Repo:** https://github.com/Alchemyst-ai/hiring/tree/main/may-2026/devops/quickstart
+
 
 ---
 
@@ -84,8 +83,8 @@ aws ec2 describe-key-pairs --query 'KeyPairs[*].KeyName' --output table
 ## Step 2 — Provision Infrastructure with Terraform
 
 ```bash
-git clone https://github.com/Mexcelcloud/alchemyst-devops-assignment.git
-cd alchemyst-devops-assignment/terraform
+git clone https://github.com/...
+cd alchemyst-devops-assignment/...
 
 terraform init
 terraform plan
