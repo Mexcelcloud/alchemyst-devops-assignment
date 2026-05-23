@@ -1,8 +1,7 @@
-# Distributed Inferencing Prototype — DevOps Deployment Manual
+# Distributed Inferencing Prototype DevOps Deployment Manual
 
 **Candidate:** Dennis Sunday Chimezie (MexcelCloud)  
 **Assignment:** Alchemyst AI DevOps Internship — May 2026  
-
 
 ---
 
@@ -15,6 +14,8 @@ two workers, and return an AI-generated response as JSON.
 
 User → curl POST → NGINX Gateway → iii Engine → TypeScript Caller
 → Python Inference Worker → Gemma AI Model → response back
+
+
 🌍 PUBLIC INTERNET
                        │
                 ┌──────▼──────┐
@@ -37,8 +38,8 @@ User → curl POST → NGINX Gateway → iii Engine → TypeScript Caller
          │  10.0.2.140 │    │  10.0.2.45   │
          │Python/Gemma │    │  TypeScript  │
          └─────────────┘    └──────────────┘
+         
          ### VM Summary
-
 | VM | Subnet | IP | Role |
 |---|---|---|---|
 | gateway-vm | Public | 44.192.58.125 | NGINX reverse proxy |
