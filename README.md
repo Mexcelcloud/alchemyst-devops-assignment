@@ -13,8 +13,12 @@ A small language model (Gemma 3-270M) runs behind a worker mesh built
 with the iii framework. Requests come in via HTTP, get routed through
 two workers, and return an AI-generated response as JSON.
 
+
+
 User → curl POST → NGINX Gateway → iii Engine → TypeScript Caller
 → Python Inference Worker → Gemma AI Model → response back
+
+
 🌍 PUBLIC INTERNET
                        │
                 ┌──────▼──────┐
@@ -38,6 +42,7 @@ User → curl POST → NGINX Gateway → iii Engine → TypeScript Caller
          │Python/Gemma │    │  TypeScript  │
          └─────────────┘    └──────────────┘
          ### VM Summary
+
 
 | VM | Subnet | IP | Role |
 |---|---|---|---|
@@ -98,6 +103,7 @@ gateway_public_ip    = "xx.xx.xx.xx"
 engine_private_ip    = "10.0.2.x"
 inference_private_ip = "10.0.2.x"
 caller_private_ip    = "10.0.2.x"
+
 ### What Terraform Creates
 - VPC (10.0.0.0/16) with DNS enabled
 - Public subnet (10.0.1.0/24) — gateway lives here
