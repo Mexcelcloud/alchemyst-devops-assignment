@@ -1,7 +1,7 @@
 # Distributed Inferencing Prototype DevOps Deployment Manual
 
 **Candidate:** Dennis Sunday Chimezie (MexcelCloud)  
-**Assignment:** Alchemyst AI DevOps Internship — May 2026  
+**Assignment:** Alchemyst AI DevOps Internship, May 2026  
 
 ---
 
@@ -12,11 +12,12 @@ A small language model (Gemma 3-270M) runs behind a worker mesh built
 with the iii framework. Requests come in via HTTP, get routed through
 two workers, and return an AI-generated response as JSON.
 
+
 User → curl POST → NGINX Gateway → iii Engine → TypeScript Caller
 → Python Inference Worker → Gemma AI Model → response back
 
 
-🌍 PUBLIC INTERNET
+            🌍 PUBLIC INTERNET
                        │
                 ┌──────▼──────┐
                 │ gateway-vm  │  44.192.58.125 (public IP)
