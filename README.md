@@ -1,6 +1,6 @@
 # Distributed Inferencing Prototype — DevOps Deployment Manual
 
-**Candidate:** Sunday Chimezie (MexcelCloud)  
+**Candidate:** Dennis Sunday Chimezie (MexcelCloud)  
 **Assignment:** Alchemyst AI DevOps Internship — May 2026  
 **Repo:** https://github.com/Mexcelcloud/alchemyst-devops-assignment  
 **Original App Repo:** https://github.com/Alchemyst-ai/hiring/tree/main/may-2026/devops/quickstart
